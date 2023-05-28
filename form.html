@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Form</title>
+</head>
+
+<body>
+    <section>
+        <div class="box">
+            <h3>Formulir Calon Pegawai</h3>
+        </div>
+        <form id="myForm">
+            <fieldset>
+                <legend>Formulir Calon Pegawai</legend>
+                <p>Nama : <input type="text" name="nama"></p>
+                <p>Alamat : <input type="text" name="alamat"></p>
+                <p>Password : <input type="password" name="password"></p>
+                <p>
+                    Jenis Kelamin :
+                    <input type="radio" name="jk" value="laki-laki" checked />
+                    Laki-Laki
+                    <input type="radio" name="jk" value="perempuan" />
+                    Perempuan
+                </p>
+                <p>
+                    Bahasa pemrograman yang dikuasai : <br>
+                    <input type="checkbox" name="web"> Web
+                    <input type="checkbox" name="mobile"> Mobile
+                    <input type="checkbox" name="desk"> Desktop
+                </p>
+                <p>
+                    Kota asal
+                    <select name="kota">
+                        <option value="Lampung">Lampung</option>
+                        <option value="Bandung">Bandung</option>
+                    </select>
+                </p>
+                <p>
+                    Apa yang membuat kami harus memilih anda?: <br>
+                    <textarea name="alasan" rows="10" cols="60" placeholder="Tulis Jawaban Anda Disini"></textarea>
+                </p>
+                <p><input type="submit" value="Submit"></p>
+            </fieldset>
+        </form>
+        <button class="back"><a href="index.html">Home</a></button>
+    </section>
+
+    <script>
+        // Mendapatkan referensi ke elemen form
+        const form = document.getElementById("myForm");
+
+        // Menambahkan event listener pada submit form
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Mencegah form untuk melakukan aksi default
+
+            // Mendapatkan nilai dari input field
+            const nama = form.elements.nama.value;
+            const alamat = form.elements.alamat.value;
+            const password = form.elements.password.value;
+            const jk = form.elements.jk.value;
+            const bahasa = [];
+            form.querySelectorAll('input[name="web"]:checked, input[name="mobile"]:checked, input[name="desk"]:checked').forEach(function(input) {
+                bahasa.push(input.value);
+            });
+            const kota = form.elements.kota.value;
+            const alasan = form.elements.alasan.value;
+
+            // Menampilkan notifikasi dengan isi hasil formulir
+            const notifikasi = `Terima kasih atas pengisian formulir, berikut ini adalah hasilnya:\n\nNama: ${nama}\nAlamat: ${alamat}\nPassword: ${password}\nJenis Kelamin: ${jk}\nBahasa Pemrograman: ${bahasa.join(", ")}\nKota Asal: ${kota}\nAlasan Memilih Anda: ${alasan}`;
+
+            alert(notifikasi);
+
+            // Reset form setelah notifikasi ditampilkan
+            form.reset();
+        });
+    </script>
+</body>
+
+</html>

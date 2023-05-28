@@ -1,0 +1,18 @@
+.btn {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.back, a {
+    margin-top: 5px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    width: 70px;
+    height: 40px;
+    border: transparent;
+    border-radius: 5px;
+    margin: 0 auto;
+}
